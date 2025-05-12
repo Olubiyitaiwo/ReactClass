@@ -2,6 +2,8 @@ import React from "react";
 import CustomButton from "../../../reuseable/customButton";
 import { useState } from "react";
 import { useSignUpMutation } from "../../../service/userAuthApi";
+import { Link } from "react-router";
+import { Link, useNavigate } from 'react-router'
 
 const SignUp =()=> {
     const userDetails = {
@@ -27,7 +29,10 @@ const SignUp =()=> {
         e.preventDefault();
         try{
             const response = await signUp(userData).unwrap();
-            console.log(response)
+            if (response.id){
+                useNavigate("/login")
+            }
+           // console.log(response)
         }catch (error) {
             console.log(error)
 
@@ -79,6 +84,8 @@ const SignUp =()=> {
                     required
                     />
                 </div>
+                <Link to= "/Login">login</Link>
+
                 <CustomButton text="signup"/>
             </form>
         </div>

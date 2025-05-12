@@ -1,4 +1,9 @@
-import React, { useState } from "react"
+import React  from 'react'
+import { Link } from "react-router";
+import CustomButton from "../../../reuseable/customButton";
+import { useState } from 'react';
+import style from './login.module.css'
+
 
 const Login = () => {
 const loginDetails = {
@@ -38,8 +43,11 @@ const loginDetails = {
                 required
                 />
             </div>
-
+                 <Link to="/signUp" className={style.button}>signUp</Link>
+                <CustomButton/>
         </form>
     </div>
  )
 }
+
+export default Login
